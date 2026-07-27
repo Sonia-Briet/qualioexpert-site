@@ -1,0 +1,233 @@
+---
+// PAGE — LE BILAN D'ORIENTATION SCOLAIRE
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const publics = [
+  { icone: '🎒', label: 'Collégiens' },
+  { icone: '📚', label: 'Lycéens' },
+  { icone: '🎓', label: 'Étudiants en études supérieures' },
+];
+
+const situations = [
+  'Ne pas savoir quelle orientation prendre',
+  'Une démotivation constante',
+  'Une situation d’échec scolaire',
+  'Une perte de confiance en soi',
+  'Un besoin d’épanouissement personnel et professionnel',
+  'Une angoisse quant à l’avenir professionnel',
+  'Un comportement de repli sur soi',
+];
+
+const etapes = [
+  { num: '1', titre: 'Valider la motivation et les compétences', texte: "Cette première étape pose les fondations : elle confirme votre motivation et vos compétences réelles, condition nécessaire pour aborder sereinement le choix d'orientation puis celui d'une voie professionnelle adaptée." },
+  { num: '2', titre: 'Explorer les pistes', texte: "Nous creusons vos centres d'intérêt pour les mettre en regard des métiers et secteurs d'activité existants. Une première liste de pistes prend forme, et vous êtes chargé de rassembler des informations sur chacune d'elles. L'objectif : vous rendre acteur de la démarche et vous prouver que le choix final vous appartient, sans rien vous imposer." },
+  { num: '3', titre: 'Affiner et construire un plan d’action', texte: "Après avoir exploré et comparé chaque piste, vous resserrez la liste autour de vos 3 choix prioritaires, classés par ordre d'importance. Vient ensuite l'enquête de terrain : identifier un professionnel et un étudiant pour chacun de ces choix, et les interroger sur leur quotidien. En parallèle, vous vous informez sur le parcours à suivre pour chaque option. Résultat : un plan d'action concret se dessine, sur les mois et les années à venir." },
+  { num: '4', titre: 'Formaliser et présenter le projet', texte: "Vous mettez en forme les résultats de vos recherches dans un court dossier de présentation, exercice qui vous aide à poser des mots sur votre projet et à gagner en conviction. Le bilan se conclut par une présentation orale : l'occasion de démontrer à vos parents que votre orientation repose sur une réflexion aboutie." },
+];
+---
+<BaseLayout
+  titre="Le bilan d'orientation scolaire — QualioExpert"
+  description="Un accompagnement pour aider les jeunes (collège, lycée, études supérieures) à clarifier leur avenir académique et professionnel."
+>
+  <section class="section">
+    <div class="conteneur">
+      <h1>Bilan d'Orientation Scolaire</h1>
+      <p class="intro">Collège · Lycée · Études supérieures</p>
+    </div>
+  </section>
+
+  <!-- QU'EST-CE QUE -->
+  <section class="section section--alt">
+    <div class="conteneur">
+      <h2>Qu'est-ce que le bilan d'orientation scolaire ?</h2>
+      <p>
+        Le bilan d'orientation scolaire est un accompagnement conçu pour aider
+        les jeunes à clarifier leur avenir académique et professionnel. Il
+        s'adresse à tous les profils : collégiens, lycéens et étudiants en
+        études supérieures. Chacun, à son niveau, peut en tirer bénéfice.
+      </p>
+      <p>
+        Certains savent déjà précisément où ils veulent aller. Pour d'autres,
+        le choix est loin d'être simple : face à la multitude de filières et
+        de parcours possibles, il est fréquent de se sentir bloqué au moment
+        de décider d'une orientation au lycée ou après le bac. Si vous doutez
+        de vos capacités, si vous ne savez pas ce qui vous correspond
+        vraiment, ou si vous vous sentez simplement perdu face à ces choix,
+        ce bilan est fait pour vous.
+      </p>
+      <p>
+        À la différence du bilan de compétences, cet accompagnement est pensé
+        spécifiquement pour les jeunes : son objectif est de les guider vers
+        une orientation scolaire ou universitaire cohérente avec leurs
+        centres d'intérêt, leurs compétences et leurs ambitions
+        professionnelles.
+      </p>
+      <ul class="publics">
+        {publics.map((p) => (
+          <li><span class="publics__icone">{p.icone}</span>{p.label}</li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- POURQUOI -->
+  <section class="section">
+    <div class="conteneur">
+      <h2>Pourquoi faire un bilan d'orientation ?</h2>
+      <p>
+        Après plusieurs années à accompagner des étudiants — cours en école
+        supérieure, conférences, jurys — j'ai régulièrement constaté une perte
+        de sens chez nombre d'entre eux. Beaucoup me sollicitaient pour un
+        bilan de compétences, sans même savoir que le bilan d'orientation
+        existait et répondait mieux à leur besoin.
+      </p>
+      <p>Voici les situations les plus fréquentes qui amènent un jeune (ou ses parents) à envisager ce bilan :</p>
+      <ul class="liste-check">
+        {situations.map((s) => <li>{s}</li>)}
+      </ul>
+      <p>
+        Ce bilan pose des bases solides pour la suite : il révèle les
+        opportunités réellement accessibles, met en lumière les forces de
+        chacun et identifie les points à travailler pour atteindre ses
+        objectifs.
+      </p>
+    </div>
+  </section>
+
+  <!-- LE DÉROULÉ -->
+  <section class="section section--alt">
+    <div class="conteneur">
+      <h2>Le déroulé en 4 étapes</h2>
+      <div class="etapes">
+        {etapes.map((e) => (
+          <div class="etape">
+            <span class="numero">{e.num}</span>
+            <div>
+              <h3>{e.titre}</h3>
+              <p>{e.texte}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CE QUE VOUS OBTENEZ -->
+  <section class="section">
+    <div class="conteneur">
+      <h2>Ce que le bilan vous apporte</h2>
+      <p>
+        Les conclusions du bilan vous accompagnent dans les décisions à
+        prendre tout au long de votre parcours scolaire. Elles rassurent
+        également vos parents : si un doute subsiste sur vos choix, les
+        résultats permettent de confirmer — ou d'écarter — vos chances de
+        réussite. Une fois la motivation et les compétences validées, le
+        choix d'orientation, puis celui d'une voie professionnelle adaptée,
+        deviennent bien plus simples à poser.
+      </p>
+      <p>
+        À l'issue du bilan, un <strong>dossier personnalisé</strong> vous est
+        remis. Il détaille les choix d'orientation envisagés, les filières
+        permettant d'y accéder, ainsi que les résultats des tests réalisés
+        durant l'accompagnement.
+      </p>
+    </div>
+  </section>
+
+  <!-- QUI VOUS ACCOMPAGNE -->
+  <section class="section section--alt">
+    <div class="conteneur">
+      <h2>Qui vous accompagne</h2>
+      <p>
+        Je suis votre unique interlocutrice tout au long du parcours :
+        inscription et suivi administratif, suivi qualité et amélioration
+        continue, référente pédagogique, référente handicap, ainsi que
+        logistique — un seul contact pour tout.
+      </p>
+      <p>
+        Depuis 25 ans, j'accompagne les parcours de vie — d'abord ceux des
+        étudiants dans l'enseignement supérieur, aujourd'hui ceux des
+        professionnels en tant que consultante indépendante. Ma mission :
+        aider chacun à mieux se connaître, à valoriser ses compétences et à
+        construire un projet réaliste. Je suis certifiée CCP2 du Titre
+        professionnel Conseiller en Insertion Professionnelle, spécialisé
+        dans la pratique du bilan de compétences (RNCP n°37274BC02).
+      </p>
+      <a href="/a-propos" class="bouton bouton--secondaire">En savoir plus sur mon parcours</a>
+    </div>
+  </section>
+
+  <!-- MODALITÉS ET TARIFS -->
+  <section class="section">
+    <div class="conteneur">
+      <h2>Modalités et tarifs</h2>
+      <div class="offre">
+        <div class="offre__prix">
+          <strong>500 €</strong>
+          <span>au total</span>
+        </div>
+        <div>
+          <ul class="liste-check">
+            <li><strong>4 séances</strong> d'1h30, soit <strong>6 heures</strong> au total</li>
+            <li>Un acompte de <strong>100 €</strong> à la signature du devis</li>
+            <li>Puis un paiement échelonné de <strong>100 €</strong> à chacune des 4 séances</li>
+          </ul>
+          <p class="offre__mention">
+            Soit un règlement en 5 fois : 100 € à la signature du devis, puis
+            100 € à chacune des 4 séances (total : 500 €).
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--sombre" style="text-align:center;">
+    <div class="conteneur">
+      <h2>Une question sur l'orientation de votre enfant ?</h2>
+      <a href="/contact" class="bouton">Réserver un échange offert</a>
+      <span class="mention-bouton" style="color:rgba(255,255,255,0.75);">⏱ 30 minutes — sans engagement</span>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .publics { list-style: none; padding: 0; margin: 1.5rem 0 0; display: flex; flex-wrap: wrap; gap: 1rem 2rem; }
+  .publics li { display: flex; align-items: center; gap: 0.6rem; font-weight: 600; max-width: 280px; }
+  .publics__icone { font-size: 1.4rem; }
+
+  .etapes { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 1.5rem; }
+  .etape { display: grid; grid-template-columns: auto 1fr; gap: 1.2rem; align-items: start; }
+  .etape h3 { margin: 0.2rem 0 0.4rem; }
+
+  .offre {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 2.5rem;
+    align-items: start;
+    background: #fff;
+    border-radius: var(--rayon);
+    padding: 2rem;
+    margin-top: 1.5rem;
+    box-shadow: 0 4px 20px rgba(46, 53, 33, 0.06);
+  }
+  .offre__prix {
+    text-align: center;
+    padding: 1.2rem 2rem;
+    background: var(--couleur-fond-alt);
+    border-radius: var(--rayon);
+  }
+  .offre__prix strong {
+    display: block;
+    font-family: var(--police-titres);
+    font-size: 2.2rem;
+    color: var(--vert-fonce);
+    line-height: 1.1;
+  }
+  .offre__prix span { font-size: 0.9rem; color: var(--couleur-texte-clair); }
+  .offre__mention { font-size: 0.9rem; color: var(--couleur-texte-clair); }
+
+  @media (max-width: 820px) {
+    .offre { grid-template-columns: 1fr; gap: 1.5rem; }
+  }
+</style>

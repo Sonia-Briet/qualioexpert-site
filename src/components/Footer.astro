@@ -1,0 +1,60 @@
+---
+// Pied de page : identité, coordonnées, liens, mentions légales.
+const annee = new Date().getFullYear();
+---
+<footer class="pied">
+  <div class="conteneur pied__inner">
+    <div class="pied__marque">
+      <strong>QualioExpert</strong>
+      <p>Sonia Briet — Consultante en bilan de compétences et formation.<br/>
+        Certifiée CCP2 du Titre professionnel Conseiller en Insertion Professionnelle — pratique du bilan de compétences (RNCP n°37274BC02).</p>
+      <p class="pied__slogan">« Vous n'avez plus besoin d'y penser, vous avez besoin d'y voir clair. »</p>
+    </div>
+    <nav class="pied__liens">
+      <a href="/bilan-de-competences">Le bilan de compétences</a>
+      <a href="/bilan-orientation-scolaire">Bilan d'orientation scolaire</a>
+      <a href="/ateliers">Ateliers</a>
+      <a href="/tarifs-et-financement">Tarifs</a>
+      <a href="/a-propos">À propos</a>
+      <a href="/blog">Blog</a>
+      <a href="/contact">Contact</a>
+      <a href="/mentions-legales">Mentions légales</a>
+    </nav>
+    <div class="pied__contact">
+      <p>📧 <a href="mailto:qualioexpert@gmail.com">qualioexpert@gmail.com</a></p>
+      <p>✆ <a href="tel:+33616687383">06 16 68 73 83</a></p>
+    </div>
+  </div>
+  <div class="conteneur pied__bas">
+    <span>© {annee} QualioExpert — Sonia Briet. Tous droits réservés.</span>
+  </div>
+</footer>
+
+<style>
+  .pied {
+    background: var(--vert-fonce);
+    color: #fff;
+    margin-top: 4rem;
+    padding: 3rem 0 1.5rem;
+  }
+  .pied__inner {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .pied p { color: rgba(255,255,255,0.78); max-width: 420px; }
+  .pied__slogan { font-style: italic; color: rgba(255,255,255,0.9) !important; }
+  .pied__liens { display: flex; flex-direction: column; gap: 0.5rem; }
+  .pied__contact { display: flex; flex-direction: column; gap: 0.5rem; }
+  .pied__contact p { margin: 0; }
+  .pied a { color: rgba(255,255,255,0.85); text-decoration: none; }
+  .pied a:hover { color: #fff; }
+  .pied__bas {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.6);
+  }
+</style>

@@ -1,0 +1,37 @@
+---
+// PAGE BLOG : liste automatique de tous les articles
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+// Récupère les articles (hors brouillons), triés du plus récent au plus ancien
+const articles = (await getCollection('blog', ({ data }) => !data.brouillon))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+<BaseLayout
+  titre="Blog — QualioExpert"
+  description="Conseils et ressources pour clarifier votre projet professionnel, préparer une reconversion ou une évolution."
+>
+  <section class="section">
+    <div class="conteneur">
+      <h1>Le blog</h1>
+      <p class="intro">Conseils et ressources pour y voir clair dans votre parcours professionnel : bilan de compétences, reconversion, évolution, sens au travail.</p>
+      <div class="grille articles">
+        {articles.map((article) => (
+          <a href={`/blog/${article.slug}`} class="carte article">
+            <h3>{article.data.titre}</h3>
+            <time>{article.data.date.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}</time>
+            <p>{article.data.description}</p>
+            <span class="article__lire">Lire l'article →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .articles { margin-top: 2rem; }
+  .article { text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 0.5rem; }
+  .article time { color: var(--couleur-texte-clair); font-size: 0.9rem; }
+  .article__lire { color: var(--couleur-principale-foncee); font-weight: 600; margin-top: auto; }
+</style>

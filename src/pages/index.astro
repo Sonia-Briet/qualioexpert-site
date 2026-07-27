@@ -1,0 +1,236 @@
+---
+// PAGE D'ACCUEIL — QualioExpert
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ParcoursSection from '../components/ParcoursSection.astro';
+import BoussoleChoix from '../components/BoussoleChoix.astro';
+
+const apports = [
+  { num: '1', titre: 'Clarifier votre situation', texte: "Prendre du recul sur votre parcours, vos expériences et vos ressentis pour mieux comprendre où vous en êtes. Vous passez du flou à une vision claire." },
+  { num: '2', titre: 'Mieux vous connaître', texte: "Aller au-delà du parcours : vos valeurs, vos sources de motivation, votre fonctionnement. Vous gagnez en lucidité et en cohérence dans vos choix." },
+  { num: '3', titre: 'Structurer un projet solide', texte: "Construire un projet réaliste, aligné avec votre profil : pistes concrètes, faisabilité, compétences transférables. Vous passez d'une idée à un projet crédible." },
+  { num: '4', titre: 'Passer à l’action', texte: "Transformer la réflexion en plan d'action : les étapes, les formations à envisager, un calendrier réaliste. Vous savez exactement quoi faire après le bilan." },
+  { num: '5', titre: 'Être accompagné(e) avec exigence et bienveillance', texte: "Un cadre professionnel structuré, une écoute attentive, un accompagnement personnalisé. Vous avancez en confiance, sans être seul(e) face à vos décisions." },
+];
+
+const temoignages = [
+  { citation: 'Vous êtes une très belle professionnelle avec laquelle il est très agréable de regarder dans le rétroviseur.', auteur: 'Laurence' },
+  { citation: "J'ai commencé le bilan, j'étais sous un parapluie, sous la tempête, n'y voyant pas à deux mètres. Maintenant, tout est clair, je vois le chemin et le soleil au bout.", auteur: 'Baptiste' },
+  { citation: "Cela m'a fait beaucoup de bien de faire ce bilan avec vous, je suis reboostée, j'ai plein de bons conseils. Vous êtes une perle !", auteur: 'Marion' },
+  { citation: "J'ai adoré votre posture et votre manière de faire. Je suis ravie et enthousiaste à l'issue de ce bilan.", auteur: 'Hélène' },
+];
+---
+<BaseLayout
+  titre="QualioExpert — Bilan de compétences & transitions professionnelles"
+  description="Bilan de compétences et accompagnement des transitions professionnelles par une consultante certifiée par l'État. Premier échange offert."
+>
+  <!-- HÉRO -->
+  <section class="hero">
+    <div class="conteneur hero__inner">
+      <div class="hero__texte">
+        <p class="hero__slogan">« Vous n'avez plus besoin d'y penser, vous avez besoin d'y voir clair. »</p>
+        <h1>Retrouver du sens, clarifier votre avenir professionnel, avancer avec confiance</h1>
+        <p class="hero__sous-titre">
+          Bilan de compétences et accompagnement des transitions professionnelles
+          par une consultante expérimentée, à l'écoute de votre parcours et de vos aspirations.
+        </p>
+        <ul class="badges">
+          <li>Certifiée CCP2 — Bilan de compétences</li>
+          <li>25 ans d'expérience</li>
+        </ul>
+        <a href="/contact" class="bouton">Prendre rendez-vous — échange offert</a>
+        <span class="mention-bouton">⏱ 30 minutes — sans engagement</span>
+      </div>
+      <div class="hero__image">
+        <BoussoleChoix compact />
+      </div>
+    </div>
+  </section>
+
+  <!-- PARCOURS D'ACCOMPAGNEMENT (bannière retravaillée) -->
+  <ParcoursSection />
+
+  <!-- VOUS ÊTES AU BON ENDROIT SI… -->
+  <section class="section section--alt">
+    <div class="conteneur">
+      <h2>Vous êtes au bon endroit si…</h2>
+      <div class="grille">
+        <div class="carte"><p>Vous vous posez des questions sur votre avenir professionnel.</p></div>
+        <div class="carte"><p>Vous ressentez un besoin de changement sans savoir par où commencer.</p></div>
+        <div class="carte"><p>Vous souhaitez retrouver du sens dans votre travail.</p></div>
+        <div class="carte"><p>Vous envisagez une reconversion ou une évolution.</p></div>
+      </div>
+      <p class="intro" style="margin-top:2rem;">
+        Ici, pas de plateforme où vous êtes seul(e) face à un écran, pas de
+        travail collectif : chaque rendez-vous vous est entièrement dédié, un
+        moment privilégié rien que pour vous.
+      </p>
+    </div>
+  </section>
+
+  <!-- QUI JE SUIS (court) -->
+  <section class="section">
+    <div class="conteneur reassurance">
+      <div class="reassurance__image">
+        <img src="/images/sonia.jpg" alt="Sonia Briet" />
+      </div>
+      <div>
+        <h2>Qui je suis</h2>
+        <p>
+          Depuis 25 ans, je m'occupe des gens et de leurs parcours — étudiants,
+          puis professionnels — d'abord dans l'enseignement supérieur, puis
+          aujourd'hui en tant que consultante indépendante. J'aide chaque
+          personne à mieux se connaître, valoriser ses compétences et
+          construire un projet réaliste.
+        </p>
+        <p><strong>Certifiée CCP2</strong> du Titre professionnel Conseiller en Insertion Professionnelle, portant sur la pratique du bilan de compétences (RNCP n°37274BC02).</p>
+        <a href="/a-propos" class="bouton bouton--secondaire">Découvrir mon parcours</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CE QUE JE VOUS APPORTE -->
+  <section class="section section--alt">
+    <div class="conteneur">
+      <h2>Un accompagnement structuré pour avancer avec clarté et confiance</h2>
+      <p class="intro">
+        Au-delà d'un simple bilan, je vous propose un véritable temps de recul et de
+        structuration pour faire évoluer votre trajectoire professionnelle de manière
+        concrète et sécurisée.
+      </p>
+      <div class="grille" style="margin-top:2rem;">
+        {apports.map((a) => (
+          <div class="carte">
+            <span class="numero">{a.num}</span>
+            <h3>{a.titre}</h3>
+            <p>{a.texte}</p>
+          </div>
+        ))}
+      </div>
+      <p class="intro" style="margin-top:2rem;">
+        À l'issue de votre bilan, vous repartez avec une vision claire, un projet
+        défini et un plan d'action concret.
+      </p>
+    </div>
+  </section>
+
+  <!-- LE BILAN DE COMPÉTENCES (aperçu 3 phases) -->
+  <section class="section">
+    <div class="conteneur">
+      <h2>Le bilan de compétences</h2>
+      <div class="grille">
+        <div class="carte"><span class="numero">1</span><h3>Analyse du parcours</h3><p>Faire le point sur vos expériences, vos compétences et vos aspirations.</p></div>
+        <div class="carte"><span class="numero">2</span><h3>Exploration des pistes</h3><p>Identifier et évaluer des pistes professionnelles concrètes et réalistes.</p></div>
+        <div class="carte"><span class="numero">3</span><h3>Construction du projet</h3><p>Bâtir un projet solide et un plan d'action clair pour la suite.</p></div>
+      </div>
+      <p style="margin-top:1.5rem;">Un accompagnement personnalisé, confidentiel et structuré.</p>
+      <a href="/bilan-de-competences" class="bouton bouton--secondaire">Découvrir le bilan de compétences</a>
+    </div>
+  </section>
+
+  <!-- FINANCEMENT (aperçu) -->
+  <section class="section section--alt">
+    <div class="conteneur">
+      <h2>Et concrètement, combien ça coûte ?</h2>
+      <p class="intro">
+        C'est souvent la première question. Le bilan est réglé directement,
+        avec la possibilité d'un paiement échelonné sur la durée de
+        l'accompagnement.
+      </p>
+      <a href="/tarifs-et-financement" class="bouton bouton--secondaire" style="margin-top:1rem;">
+        Découvrir les tarifs
+      </a>
+    </div>
+  </section>
+
+  <!-- TÉMOIGNAGES -->
+  <section class="section section--alt">
+    <div class="conteneur">
+      <h2>Ils ont fait le point avec moi</h2>
+      <div class="grille">
+        {temoignages.map((t) => (
+          <blockquote class="carte temoignage">
+            « {t.citation} »
+            <footer>— {t.auteur}</footer>
+          </blockquote>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- MA DIFFÉRENCE -->
+  <section class="section">
+    <div class="conteneur">
+      <h2>Ma différence</h2>
+      <p class="intro">Ce qui fait la différence dans mon accompagnement :</p>
+      <ul class="liste-check">
+        <li>Une solide expérience du terrain, au contact de publics variés.</li>
+        <li>Une approche structurée, issue des pratiques professionnelles.</li>
+        <li>Une écoute attentive, centrée sur votre réalité et vos besoins.</li>
+        <li>Une spécialiste de l'accompagnement humain des transitions.</li>
+        <li>Une professionnelle formée aux fragilités psychologiques.</li>
+        <li>Référente handicap.</li>
+        <li>Une consultante inclusive.</li>
+        <li>Un accompagnement premium et sécurisant.</li>
+        <li>Une formation continue à la psychologie, pour affiner sans cesse ma pratique.</li>
+      </ul>
+      <p>Vous n'êtes pas un profil « standard » : votre accompagnement ne doit pas l'être non plus.</p>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="section section--sombre cta-final">
+    <div class="conteneur">
+      <h2>Et si nous faisions le point ensemble ?</h2>
+      <p>Un premier échange gratuit et sans engagement pour voir comment je peux vous accompagner.</p>
+      <a href="/contact" class="bouton">Réserver un échange offert</a>
+      <span class="mention-bouton" style="color:rgba(255,255,255,0.75);">⏱ 30 minutes — sans engagement</span>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero { padding: 4rem 0 3rem; }
+  .hero__inner {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  .hero__slogan {
+    font-family: var(--police-titres);
+    font-style: italic;
+    font-size: clamp(1.3rem, 2.2vw, 1.6rem);
+    line-height: 1.4;
+    color: var(--vert-fonce);
+    border-left: 4px solid var(--vert-cta);
+    padding-left: 1.2rem;
+    margin: 0 0 1.8rem;
+  }
+  .hero__sous-titre { font-size: 1.2rem; color: var(--couleur-texte-clair); }
+  .hero__image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--couleur-fond-alt);
+    border-radius: var(--rayon);
+    padding: 1.5rem;
+  }
+  .reassurance { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 2.5rem; align-items: center; }
+  .reassurance__image img {
+    width: 100%;
+    max-width: 320px;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: center 70%;
+    border-radius: var(--rayon);
+  }
+  .temoignage { font-style: italic; font-size: 1.1rem; margin: 0; }
+  .temoignage footer { font-style: normal; font-size: 0.9rem; color: var(--couleur-texte-clair); margin-top: 0.8rem; }
+  .liste-check { list-style: none; padding: 0; }
+  .liste-check li { padding-left: 1.8rem; position: relative; margin-bottom: 0.6rem; }
+  .liste-check li::before { content: '✓'; position: absolute; left: 0; color: var(--vert-cta); font-weight: 700; }
+  .cta-final { text-align: center; }
+  @media (max-width: 820px) {
+    .hero__inner, .reassurance { grid-template-columns: 1fr; }
+  }
+</style>

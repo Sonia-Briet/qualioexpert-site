@@ -1,0 +1,172 @@
+---
+// PAGE — LE BILAN DE COMPÉTENCES
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BoussoleChoix from '../components/BoussoleChoix.astro';
+
+const publics = [
+  { icone: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>', label: 'Salariés' },
+  { icone: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="6"/><path d="M20 20l-5.5-5.5"/></svg>', label: "Demandeurs d'emploi" },
+  { icone: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c1.5-4 4.5-6 7-6s5.5 2 7 6"/></svg>', label: 'Indépendants et professions libérales' },
+  { icone: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 0 1 14-5.3"/><path d="M18 3v4h-4"/><path d="M20 12a8 8 0 0 1-14 5.3"/><path d="M6 21v-4h4"/></svg>', label: "Toute personne en réflexion d'évolution, de repositionnement ou de reconversion" },
+];
+
+const etapes = [
+  { num: '1', titre: 'Clarifier votre situation', texte: "Identifier vos compétences réelles (souvent sous-estimées), mettre en lumière vos motivations profondes, comprendre ce qui vous freine.", resultat: "Vous passez du flou à une vision claire de votre situation." },
+  { num: '2', titre: 'Mieux vous connaître', texte: "Nous travaillons sur vos valeurs professionnelles, vos sources de motivation, votre fonctionnement et vos besoins.", resultat: "Vous gagnez en lucidité et en cohérence dans vos choix." },
+  { num: '3', titre: 'Structurer un projet solide', texte: "L'exploration de pistes concrètes, l'analyse de leur faisabilité, l'identification des compétences transférables.", resultat: "Vous passez d'une idée à un projet structuré et crédible." },
+  { num: '4', titre: 'Passer à l’action', texte: "Nous définissons ensemble les étapes à suivre, les éventuelles formations à envisager et un calendrier réaliste.", resultat: "Vous savez exactement quoi faire après le bilan." },
+  { num: '5', titre: 'Être accompagné(e) avec exigence et bienveillance', texte: "Une écoute attentive, des échanges structurés, un accompagnement personnalisé.", resultat: "Vous avancez en confiance, sans être seul(e) face à vos décisions." },
+];
+---
+<BaseLayout
+  titre="Le bilan de compétences — QualioExpert"
+  description="Un bilan de compétences structuré en 3 phases, confidentiel et personnalisé, pour clarifier votre projet professionnel."
+>
+  <section class="section">
+    <div class="conteneur">
+      <h1>Le bilan de compétences</h1>
+      <p class="intro">
+        Au-delà d'un simple bilan, un véritable temps de recul et de structuration
+        pour faire évoluer votre trajectoire professionnelle de manière concrète et sécurisée.
+      </p>
+    </div>
+  </section>
+
+  <!-- PUBLIC CONCERNÉ & FINALITÉ -->
+  <section class="section section--alt">
+    <div class="conteneur">
+      <h2>À qui s'adresse le bilan de compétences ?</h2>
+      <p>
+        Le bilan de compétences s'adresse à toute personne souhaitant faire un point
+        sur sa situation professionnelle : salariés, demandeurs d'emploi, ou toute
+        personne engagée dans une réflexion d'évolution, de repositionnement ou de
+        reconversion. Une attention particulière est portée aux situations de
+        transition sensibles, aux périodes de questionnement ou de fragilité, ainsi
+        qu'aux besoins d'adaptation pouvant impacter le parcours professionnel.
+      </p>
+      <ul class="publics">
+        {publics.map((p) => (
+          <li><span class="publics__icone" set:html={p.icone} />{p.label}</li>
+        ))}
+      </ul>
+      <p>
+        Il constitue un dispositif structuré permettant d'analyser son parcours,
+        d'identifier ses compétences et de construire un projet professionnel
+        cohérent — un cadre méthodologique pour prendre du recul, objectiver ses
+        choix et sécuriser ses décisions, en favorisant votre autonomie et votre
+        capacité à vous projeter dans un projet réaliste et argumenté.
+      </p>
+    </div>
+  </section>
+
+  <!-- LES 3 PHASES -->
+  <section class="section">
+    <div class="conteneur">
+      <h2>Un accompagnement en 3 phases</h2>
+      <div class="grille">
+        <div class="carte"><span class="numero">1</span><h3>Analyse du parcours</h3><p class="etape__phase">Phase préliminaire</p><p>Faire le point sur vos expériences, vos compétences et vos aspirations.</p></div>
+        <div class="carte"><span class="numero">2</span><h3>Exploration des pistes</h3><p class="etape__phase">Phase d'investigation</p><p>Identifier et évaluer des pistes professionnelles concrètes et réalistes.</p></div>
+        <div class="carte"><span class="numero">3</span><h3>Construction du projet</h3><p class="etape__phase">Phase de conclusion</p><p>Bâtir un projet solide et un plan d'action clair pour la suite.</p></div>
+      </div>
+      <p style="margin-top:1.5rem;"><strong>Un accompagnement personnalisé, confidentiel et structuré, conforme au cadre réglementaire du bilan de compétences.</strong></p>
+    </div>
+  </section>
+
+  <!-- CADRE LÉGAL -->
+  <section class="section section--alt">
+    <div class="conteneur">
+      <h2>Un dispositif encadré par la loi</h2>
+      <ul class="liste-check">
+        <li>Le bilan de compétences est reconnu par le Code du travail comme l'une
+          des actions concourant au développement des compétences (article
+          L.6313-1).</li>
+        <li>Ses objectifs et son déroulement en plusieurs phases sont précisément
+          définis par les articles R.6313-4 à R.6313-8 du Code du travail.</li>
+        <li>La confidentialité de vos résultats est garantie par les dispositions
+          de l'article R.6313-7 du Code du travail : ils vous appartiennent
+          exclusivement et ne peuvent être communiqués à un tiers sans votre accord.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- MÉTHODOLOGIE -->
+  <section class="section">
+    <div class="conteneur">
+      <h2>Méthodologie</h2>
+      <p>
+        L'accompagnement repose sur une méthodologie individualisée, centrée sur
+        vous et adaptée à votre situation. Il s'appuie sur des entretiens
+        structurés, des outils d'analyse, des supports de réflexion et des
+        ressources documentaires, sélectionnés en fonction des besoins identifiés
+        en début de parcours.
+      </p>
+      <p>
+        La démarche alterne temps d'échange, travaux personnels et analyses, afin
+        de favoriser l'appropriation des résultats et votre implication tout au
+        long du bilan.
+      </p>
+    </div>
+  </section>
+
+  <!-- CE QUE VOUS Y GAGNEZ (5 étapes détaillées) -->
+  <section class="section section--alt">
+    <div class="conteneur">
+      <h2>Ce que vous y gagnez, étape par étape</h2>
+      <div class="etapes">
+        {etapes.map((e) => (
+          <div class="etape">
+            <span class="numero">{e.num}</span>
+            <div>
+              <h3>{e.titre}</h3>
+              <p>{e.texte}</p>
+              <p class="etape__resultat">→ {e.resultat}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+      <p class="intro" style="margin-top:2rem;">
+        À l'issue de votre bilan, vous repartez avec une vision claire, un projet
+        défini et un plan d'action concret.
+      </p>
+    </div>
+  </section>
+
+  <!-- LES CHOIX POSSIBLES (boussole) -->
+  <section class="section">
+    <div class="conteneur">
+      <BoussoleChoix />
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--sombre" style="text-align:center;">
+    <div class="conteneur">
+      <h2>Prêt(e) à faire le point ?</h2>
+      <a href="/contact" class="bouton">Réserver un échange offert</a>
+      <span class="mention-bouton" style="color:rgba(255,255,255,0.75);">⏱ 30 minutes — sans engagement</span>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .etapes { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 1.5rem; }
+  .etape { display: grid; grid-template-columns: auto 1fr; gap: 1.2rem; align-items: start; }
+  .etape h3 { margin: 0.2rem 0 0.4rem; }
+  .etape__resultat { color: var(--vert-cta-hover); font-weight: 600; }
+  .etape__phase { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--couleur-texte-clair); font-weight: 600; margin: 0 0 0.5rem; }
+
+  .publics { list-style: none; padding: 0; margin: 1.5rem 0; display: flex; flex-wrap: wrap; gap: 1rem 2rem; }
+  .publics li { display: flex; align-items: center; gap: 0.8rem; font-weight: 600; max-width: 280px; }
+  .publics__icone {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    width: 2.6rem;
+    height: 2.6rem;
+    border-radius: 50%;
+    background: var(--couleur-fond-alt);
+    color: var(--vert-fonce);
+  }
+  .publics__icone svg { width: 1.3rem; height: 1.3rem; }
+</style>

@@ -1,0 +1,37 @@
+---
+// Formulaire de contact simple, sans serveur.
+// Il envoie les messages par email via Formspree (gratuit).
+// 1. Créez un compte sur https://formspree.io
+// 2. Créez un formulaire, copiez son identifiant
+// 3. Remplacez VOTRE_ID_FORMSPREE ci-dessous
+---
+<form class="formulaire" action="https://formspree.io/f/VOTRE_ID_FORMSPREE" method="POST">
+  <label>
+    Votre nom
+    <input type="text" name="nom" required />
+  </label>
+  <label>
+    Votre email
+    <input type="email" name="email" required />
+  </label>
+  <label>
+    Votre message
+    <textarea name="message" rows="5" placeholder="Parlez-moi de votre situation en quelques mots…" required></textarea>
+  </label>
+  <button type="submit" class="bouton">Envoyer mon message</button>
+</form>
+
+<style>
+  .formulaire { display: flex; flex-direction: column; gap: 1.1rem; max-width: 520px; }
+  .formulaire label { display: flex; flex-direction: column; gap: 0.4rem; font-weight: 600; }
+  .formulaire input,
+  .formulaire textarea {
+    font-family: inherit;
+    font-size: 1rem;
+    padding: 0.75rem;
+    border: 1px solid #d8cfc4;
+    border-radius: var(--rayon);
+    background: #fff;
+  }
+  .formulaire button { align-self: flex-start; margin-top: 0.5rem; cursor: pointer; border: none; }
+</style>

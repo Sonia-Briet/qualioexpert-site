@@ -1,0 +1,124 @@
+/* =========================================================
+   CHARTE GRAPHIQUE — QualioExpert
+   Palette reprise de votre bannière (verts sauge & olive).
+   Ajustez librement les valeurs ci-dessous.
+   ========================================================= */
+:root {
+  /* Couleurs de marque */
+  --vert-fonce: #3F4A2E;        /* bande foncée, footer, titres forts */
+  --vert-sauge: #8BA574;        /* vert clair de la bannière / du logo */
+  --vert-sauge-clair: #A7BC93;
+  --vert-cta: #5C7A3F;          /* boutons d'action */
+  --vert-cta-hover: #4A6432;
+
+  --couleur-fond: #F6F8F1;      /* crème verdâtre, doux */
+  --couleur-fond-alt: #EAF0E1;  /* section alternée */
+  --couleur-texte: #2E3521;     /* vert très foncé, plus doux que le noir */
+  --couleur-texte-clair: #5F6A4F;
+
+  /* Typographie */
+  --police-titres: 'Georgia', 'Times New Roman', serif;
+  --police-texte: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --police-logo: 'Poppins', 'Trebuchet MS', sans-serif;
+
+  /* Espacements & rayons */
+  --rayon: 12px;
+  --largeur-max: 1080px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--police-texte);
+  color: var(--couleur-texte);
+  background: var(--couleur-fond);
+  line-height: 1.7;
+  font-size: 18px;
+}
+
+h1, h2, h3 { font-family: var(--police-titres); line-height: 1.25; font-weight: 700; color: var(--vert-fonce); }
+h1 { font-size: clamp(2rem, 5vw, 3.1rem); }
+h2 { font-size: clamp(1.6rem, 3.5vw, 2.2rem); }
+
+a { color: var(--vert-cta-hover); }
+
+.conteneur {
+  max-width: var(--largeur-max);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section { padding: 4.5rem 0; }
+.section--alt { background: var(--couleur-fond-alt); }
+.section--sombre { background: var(--vert-fonce); color: #fff; }
+.section--sombre h2 { color: #fff; }
+
+/* Bouton principal (call-to-action) */
+.bouton {
+  display: inline-block;
+  background: var(--vert-cta);
+  color: #fff;
+  padding: 0.9rem 1.8rem;
+  border-radius: var(--rayon);
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+.bouton:hover { background: var(--vert-cta-hover); }
+
+.bouton--secondaire {
+  background: transparent;
+  color: var(--vert-cta-hover);
+  border: 2px solid var(--vert-cta);
+}
+.bouton--secondaire:hover { background: var(--vert-cta); color: #fff; }
+
+/* Mention rassurante sous les boutons */
+.mention-bouton {
+  display: block;
+  margin-top: 0.6rem;
+  font-size: 0.9rem;
+  color: var(--couleur-texte-clair);
+}
+
+/* Badges de réassurance (certification, expérience…) */
+.badges { display: flex; flex-wrap: wrap; gap: 0.7rem; margin: 1.5rem 0; padding: 0; list-style: none; }
+.badges li {
+  background: rgba(139, 165, 116, 0.18);
+  color: var(--vert-fonce);
+  border-radius: 999px;
+  padding: 0.4rem 1rem;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+/* Grille de cartes */
+.grille {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+.carte {
+  background: #fff;
+  border-radius: var(--rayon);
+  padding: 1.8rem;
+  box-shadow: 0 4px 20px rgba(46, 53, 33, 0.06);
+}
+.carte h3 { margin-top: 0; }
+
+/* Puce numérotée pour les étapes */
+.numero {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.4rem; height: 2.4rem;
+  border-radius: 50%;
+  background: var(--vert-sauge);
+  color: #fff;
+  font-family: var(--police-titres);
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+}
+
+.intro { font-size: 1.2rem; color: var(--couleur-texte-clair); max-width: 720px; }

@@ -1,0 +1,110 @@
+---
+// COMPOSANT — Boussole des choix possibles à l'issue d'un bilan de compétences.
+// `compact` : version réduite sans bandeau ni texte descriptif (utilisée dans le héro de l'accueil).
+interface Props {
+  compact?: boolean;
+}
+const { compact = false } = Astro.props;
+
+const issues = [
+  { position: 'nord', icone: '🌱', titre: 'Évolution', texte: 'Poste différent + même contexte' },
+  { position: 'est', icone: '⇄', titre: 'Reconversion', texte: 'Poste différent + contexte différent' },
+  { position: 'sud', icone: '→', titre: 'Transfert', texte: 'Même poste + contexte différent' },
+  { position: 'ouest', icone: '↻', titre: 'Continuité', texte: 'Même poste + même contexte' },
+];
+---
+<div class={compact ? 'boussole boussole--compact' : 'boussole'}>
+  {!compact && (
+    <div class="boussole-bandeau">
+      <h2>Les choix possibles à l'issue d'un bilan de compétences</h2>
+    </div>
+  )}
+  <div class="boussole-grille">
+    {issues.map((i) => (
+      <div class={`boussole-item boussole-item--${i.position}`}>
+        <span class="boussole-icone">{i.icone}</span>
+        <h3>{i.titre}</h3>
+        {!compact && <p>{i.texte}</p>}
+      </div>
+    ))}
+    <div class="boussole-centre" aria-hidden="true">
+      <svg viewBox="0 0 200 200" width="100%" height="100%">
+        <circle cx="100" cy="100" r="95" fill="none" stroke="var(--vert-sauge-clair)" stroke-width="1.5" stroke-dasharray="2 6"/>
+        <circle cx="100" cy="15" r="2.5" fill="var(--vert-sauge)"/>
+        <circle cx="185" cy="100" r="2.5" fill="var(--vert-sauge)"/>
+        <circle cx="100" cy="185" r="2.5" fill="var(--vert-sauge)"/>
+        <circle cx="15" cy="100" r="2.5" fill="var(--vert-sauge)"/>
+        <polygon points="100,15 106.9,83.4 131.8,68.2 116.6,93.1 185,100 116.6,106.9 131.8,131.8 106.9,116.6 100,185 93.1,116.6 68.2,131.8 83.4,106.9 15,100 83.4,93.1 68.2,68.2 93.1,83.4" fill="var(--vert-fonce)"/>
+        <text x="100" y="10" text-anchor="middle" font-family="var(--police-titres)" font-style="italic" font-size="14" fill="var(--vert-fonce)">N</text>
+        <text x="195" y="104" text-anchor="middle" font-family="var(--police-titres)" font-style="italic" font-size="14" fill="var(--vert-fonce)">E</text>
+        <text x="100" y="198" text-anchor="middle" font-family="var(--police-titres)" font-style="italic" font-size="14" fill="var(--vert-fonce)">S</text>
+        <text x="6" y="104" text-anchor="middle" font-family="var(--police-titres)" font-style="italic" font-size="14" fill="var(--vert-fonce)">W</text>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<style>
+  .boussole-bandeau {
+    background: var(--couleur-fond-alt);
+    border-radius: var(--rayon);
+    padding: 1rem 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+  .boussole-bandeau h2 { margin: 0; }
+
+  .boussole-grille {
+    display: grid;
+    grid-template-columns: 1fr minmax(180px, 260px) 1fr;
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+      ".     nord    ."
+      "ouest centre  est"
+      ".     sud     .";
+    gap: 1.5rem;
+    align-items: center;
+    justify-items: center;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .boussole-item { text-align: center; max-width: 220px; }
+  .boussole-item h3 { margin: 0.4rem 0 0.2rem; }
+  .boussole-item p { margin: 0; font-size: 0.92rem; color: var(--couleur-texte-clair); }
+  .boussole-icone {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.6rem;
+    height: 2.6rem;
+    border-radius: 50%;
+    background: var(--couleur-fond-alt);
+    color: var(--vert-fonce);
+    font-size: 1.3rem;
+    font-weight: 700;
+  }
+  .boussole-item--nord { grid-area: nord; }
+  .boussole-item--est { grid-area: est; }
+  .boussole-item--sud { grid-area: sud; }
+  .boussole-item--ouest { grid-area: ouest; }
+  .boussole-centre { grid-area: centre; width: 100%; max-width: 220px; }
+
+  @media (max-width: 700px) {
+    .boussole-grille {
+      grid-template-columns: 1fr;
+      grid-template-areas: "centre" "nord" "est" "sud" "ouest";
+      max-width: 320px;
+    }
+    .boussole-centre { max-width: 180px; margin-bottom: 1rem; }
+  }
+
+  /* Version compacte : pour un encadré étroit (ex. héro de l'accueil) */
+  .boussole--compact .boussole-grille {
+    grid-template-columns: 1fr minmax(90px, 130px) 1fr;
+    gap: 0.6rem;
+    max-width: 380px;
+  }
+  .boussole--compact .boussole-item { max-width: 130px; }
+  .boussole--compact .boussole-item h3 { font-size: 0.95rem; margin: 0.3rem 0 0; }
+  .boussole--compact .boussole-icone { width: 2rem; height: 2rem; font-size: 1rem; }
+  .boussole--compact .boussole-centre { max-width: 130px; }
+</style>

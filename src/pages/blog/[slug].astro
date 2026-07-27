@@ -1,0 +1,37 @@
+---
+// GABARIT D'UN ARTICLE DE BLOG
+// Cette page génère automatiquement une page par article markdown.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const articles = await getCollection('blog');
+  return articles.map((article) => ({
+    params: { slug: article.slug },
+    props: { article },
+  }));
+}
+
+const { article } = Astro.props;
+const { Content } = await article.render();
+---
+<BaseLayout titre={`${article.data.titre} — QualioExpert`} description={article.data.description}>
+  <article class="section">
+    <div class="conteneur article-contenu">
+      <a href="/blog" class="retour">← Tous les articles</a>
+      <h1>{article.data.titre}</h1>
+      <time>{article.data.date.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}</time>
+      <div class="prose">
+        <Content />
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .article-contenu { max-width: 720px; }
+  .retour { display: inline-block; margin-bottom: 1rem; text-decoration: none; }
+  .prose { margin-top: 2rem; }
+  .prose :global(p) { margin-bottom: 1.2rem; }
+  .prose :global(h2) { margin-top: 2rem; }
+</style>

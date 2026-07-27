@@ -1,0 +1,233 @@
+---
+// PAGE — TARIFS
+// Cette page répond à la question n°1 des visiteurs : tarif, durée, modalités,
+// délais d'accès, accessibilité handicap.
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const offres = [
+  {
+    nom: 'Formule Essentielle',
+    prix: '1 400 €',
+    items: [
+      "<strong>16 heures</strong> d'accompagnement, réparties sur 8 à 12 semaines",
+      "Une phase d'analyse de départ approfondie, pour explorer plus en détail votre parcours et vos expériences",
+      'Des entretiens individuels en visioconférence ou en présentiel',
+      "Un rythme adapté à vos disponibilités, généralement à raison d'une séance par semaine",
+      'Des outils et questionnaires adaptés à votre situation',
+      'Un document de synthèse personnel, qui vous appartient',
+      'Un entretien de suivi à 6 mois, inclus',
+    ],
+  },
+  {
+    nom: 'Formule Approfondie',
+    prix: '1 800 €',
+    items: [
+      "<strong>20 heures</strong> d'accompagnement, réparties sur 8 à 12 semaines",
+      "Une phase d'analyse de départ approfondie, pour explorer plus en détail votre parcours et vos expériences",
+      'Un temps supplémentaire consacré à l’exploration de vos valeurs et de vos motivations profondes',
+      'Des entretiens individuels en visioconférence ou en présentiel',
+      "Un rythme adapté à vos disponibilités, généralement à raison d'une séance par semaine",
+      'Des outils et questionnaires adaptés à votre situation',
+      'Un document de synthèse personnel, qui vous appartient',
+      'Un entretien de suivi à 6 mois, inclus',
+    ],
+  },
+];
+
+const faq = [
+  {
+    q: 'Combien de temps dure un bilan de compétences ?',
+    r: "Le bilan est encadré par la loi : 24 heures maximum, réparties sur plusieurs semaines. Concrètement, cela représente des entretiens individuels d'environ 2 heures, espacés pour vous laisser le temps de la réflexion, ainsi qu'un travail personnel entre les séances.",
+  },
+  {
+    q: 'Mon employeur sera-t-il informé ?',
+    r: "Non. Le bilan est réglé directement par vous, votre employeur n'est impliqué à aucun moment. Les résultats du bilan vous appartiennent : le document de synthèse ne peut être transmis à un tiers sans votre accord écrit.",
+  },
+  {
+    q: 'Le bilan est-il confidentiel ?',
+    r: "Oui, totalement. La confidentialité est une obligation légale (article R.6313-7 du Code du travail) et un principe de travail. Tout ce qui est échangé pendant les entretiens reste entre nous. Toutefois, et sauf opposition du bénéficiaire, ces documents peuvent être conservés pendant une durée strictement nécessaire à la réalisation du suivi post-bilan, notamment la session d'évaluation à 6 mois prévue dans le cadre réglementaire du bilan de compétences. Au-delà de cette période, les documents sont détruits.",
+  },
+  {
+    q: 'Les entretiens se font-ils à distance ou en présentiel ?',
+    r: "Les deux sont possibles, selon ce qui vous convient le mieux. Le format à distance (visioconférence) fonctionne très bien et permet de s'adapter à des emplois du temps chargés.",
+  },
+  {
+    q: 'Que se passe-t-il si je ne sais pas encore ce que je veux faire ?',
+    r: "C'est précisément le point de départ de la plupart des bilans, et ce n'est pas un problème. Le rôle du bilan est justement de transformer un questionnement flou en pistes concrètes, puis en projet structuré.",
+  },
+  {
+    q: 'Quels sont les délais pour commencer ?',
+    r: "Après notre premier échange, l'entrée en bilan intervient généralement sous [2 à 4] semaines, selon les disponibilités de chacun. Conformément aux dispositions de l'article L.6353-5 du Code du travail, le bénéficiaire dispose, dans le cadre d'un financement direct (hors Compte Personnel de Formation), d'un délai de rétractation de dix (10) jours calendaires à compter de la signature de la convention.",
+  },
+];
+---
+<BaseLayout
+  titre="Tarifs — QualioExpert"
+  description="Tarif et modalités du bilan de compétences, réglé directement, et réponses aux questions fréquentes."
+>
+  <section class="section">
+    <div class="conteneur">
+      <h1>Tarifs</h1>
+      <p class="intro">
+        Un bilan de compétences représente un investissement dans votre avenir
+        professionnel. Voici tout ce qu'il faut savoir, en toute transparence.
+      </p>
+    </div>
+  </section>
+
+  <!-- TARIFS -->
+  <section class="section section--alt" style="padding-top:0;">
+    <div class="conteneur">
+      <h2>Le bilan de compétences</h2>
+      <div class="offres">
+        {offres.map((o) => (
+          <div class="offre">
+            <h3>{o.nom}</h3>
+            <div class="offre__prix">
+              <strong>{o.prix}</strong>
+              <span>net de taxe</span>
+            </div>
+            <ul class="liste-check">
+              {o.items.map((i) => <li set:html={i} />)}
+            </ul>
+          </div>
+        ))}
+      </div>
+      <p class="offre__mention" style="margin-top:1.5rem;">
+        Prestation non soumise à TVA (article 261-4-4° du CGI). Devis et convention
+        de formation fournis avant toute entrée en bilan.
+      </p>
+    </div>
+  </section>
+
+  <!-- MODALITÉS DE PAIEMENT -->
+  <section class="section">
+    <div class="conteneur">
+      <h2>Modalités de paiement</h2>
+      <p class="intro">
+        Le bilan est réglé directement, avec un règlement échelonné possible sur
+        la durée de l'accompagnement. Nous verrons ensemble les modalités lors du
+        premier échange.
+      </p>
+      <p class="offre__mention">
+        Conformément aux dispositions de l'article L.6353-5 du Code du travail, le
+        bénéficiaire dispose, dans le cadre d'un financement direct (hors Compte
+        Personnel de Formation), d'un délai de rétractation de dix (10) jours
+        calendaires à compter de la signature de la convention.
+      </p>
+    </div>
+  </section>
+
+  <!-- ACCESSIBILITÉ -->
+  <section class="section">
+    <div class="conteneur">
+      <h2>Accessibilité et situation de handicap</h2>
+      <p>
+        Une attention particulière est portée aux besoins spécifiques pouvant
+        impacter le déroulement du bilan : situations de handicap, troubles DYS,
+        problématiques de santé, contraintes personnelles ou professionnelles, ou
+        toute situation temporaire nécessitant une adaptation. Ces besoins sont pris
+        en compte tout au long du parcours d'accompagnement.
+      </p>
+      <p>
+        Les ajustements sont définis en concertation avec vous et peuvent concerner :
+      </p>
+      <ul class="liste-check">
+        <li>le rythme des séances ;</li>
+        <li>les modalités d'accompagnement ;</li>
+        <li>les supports transmis et les outils mobilisés ;</li>
+        <li>les temps de pause et l'organisation des échanges ;</li>
+        <li>les modalités de travail entre les séances.</li>
+      </ul>
+      <p>
+        Ces besoins et adaptations sont réévalués tout au long du bilan afin de
+        garantir un accompagnement accessible et individualisé. Contactez-moi en
+        amont afin que nous étudiions ensemble les aménagements nécessaires ; je
+        vous oriente si besoin vers les ressources spécialisées (Agefiph, Cap Emploi).
+      </p>
+      <p>
+        En tant que référente handicap, je m'engage à adapter mon accompagnement
+        aux besoins spécifiques des personnes en situation de handicap (PSH), afin
+        de vous garantir les meilleures conditions de réalisation de votre bilan
+        au sein de mon organisme de formation. N'hésitez pas à me faire part de
+        vos attentes : j'y répondrai dans les meilleurs délais.
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section--alt">
+    <div class="conteneur">
+      <h2>Questions fréquentes</h2>
+      <div class="faq">
+        {faq.map((item) => (
+          <details class="faq__item">
+            <summary>{item.q}</summary>
+            <p>{item.r}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--sombre" style="text-align:center;">
+    <div class="conteneur">
+      <h2>Une question sur le tarif ?</h2>
+      <p>Le premier échange sert justement à y voir clair, sans engagement.</p>
+      <a href="/contact" class="bouton">Réserver un échange offert</a>
+      <span class="mention-bouton" style="color:rgba(255,255,255,0.75);">⏱ 30 minutes — sans engagement</span>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .offres {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+  .offre {
+    background: #fff;
+    border-radius: var(--rayon);
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(46, 53, 33, 0.06);
+  }
+  .offre h3 { margin-top: 0; }
+  .offre__prix {
+    text-align: center;
+    padding: 1.2rem 2rem;
+    background: var(--couleur-fond-alt);
+    border-radius: var(--rayon);
+    margin-bottom: 1.2rem;
+  }
+  .offre__prix strong {
+    display: block;
+    font-family: var(--police-titres);
+    font-size: 2.2rem;
+    color: var(--vert-fonce);
+    line-height: 1.1;
+  }
+  .offre__prix span { font-size: 0.9rem; color: var(--couleur-texte-clair); }
+  .offre__mention { font-size: 0.9rem; color: var(--couleur-texte-clair); }
+  .liste-check { list-style: none; padding: 0; margin-top: 0; }
+  .liste-check li { padding-left: 1.8rem; position: relative; margin-bottom: 0.5rem; }
+  .liste-check li::before { content: '✓'; position: absolute; left: 0; color: var(--vert-cta); font-weight: 700; }
+
+  .faq { margin-top: 1.5rem; max-width: 800px; }
+  .faq__item {
+    background: #fff;
+    border-radius: var(--rayon);
+    padding: 1.2rem 1.5rem;
+    margin-bottom: 0.8rem;
+  }
+  .faq__item summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--vert-fonce);
+    font-size: 1.05rem;
+  }
+  .faq__item p { margin-bottom: 0; }
+
+</style>

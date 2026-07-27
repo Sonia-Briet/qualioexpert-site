@@ -1,0 +1,148 @@
+---
+// PAGE — ATELIERS
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const ateliers = [
+  {
+    titre: 'Visibilité professionnelle',
+    duree: '2h',
+    tarif: '140 €',
+    description: "Donnez à voir la valeur réelle de votre parcours : un positionnement clair et un profil professionnel authentique, pour gagner en visibilité, en crédibilité et en opportunités.",
+    contenu: [
+      'Un CV qui vous ressemble et qui sort du lot',
+      'Une lettre ou un mail de motivation pertinent, loin des formules toutes faites',
+      "La préparation aux entretiens d'embauche : pitch, questions pièges, mise en situation",
+      'Un profil LinkedIn optimisé — ou créé de A à Z si besoin',
+      "Ce que l'intelligence artificielle peut, et ne peut pas, faire pour votre candidature",
+    ],
+  },
+  {
+    titre: 'Posture professionnelle',
+    duree: '2h',
+    tarif: '110 €',
+    description: "Gagnez en confiance et en sérénité pour mieux traverser les situations du quotidien et passer à l'action avec efficacité.",
+    contenu: [
+      'Renforcer votre confiance et votre estime de vous',
+      'Mieux gérer votre stress',
+      'Prioriser et reprendre la main sur votre temps',
+      'Retrouver de la motivation et passer à l’action',
+    ],
+  },
+  {
+    titre: 'Relationnel',
+    duree: '2h',
+    tarif: '110 €',
+    description: "Installez une communication fluide et affirmée pour construire des relations professionnelles sereines, désamorcer les tensions et vous positionner avec justesse.",
+    contenu: [
+      "Les bases d'une communication interpersonnelle efficace",
+      'Développer votre écoute active',
+      'Désamorcer les tensions et gérer les conflits',
+      'Affiner votre posture relationnelle',
+    ],
+  },
+  {
+    titre: 'Pratique professionnelle',
+    duree: '2h',
+    tarif: '110 €',
+    description: "Gagnez en aisance dans l'animation et la transmission : construisez des interventions structurées, capables de capter votre public.",
+    contenu: [
+      'Préparer et animer une réunion efficace',
+      'Concevoir et animer un atelier thématique',
+      'Structurer une intervention claire et vivante',
+      "Adapter votre style d'animation à votre public",
+    ],
+  },
+  {
+    titre: 'Dynamique professionnelle',
+    duree: '2h',
+    tarif: '110 €',
+    description: "Sortez de l'immobilisme : clarifiez vos priorités, dépassez vos freins et avancez de façon concrète et alignée avec vous-même.",
+    contenu: [
+      "Sortir du trop-plein d'idées pour retrouver une direction claire",
+      'Repérer ce qui vous freine — peur, doute, procrastination — et clarifier vos objectifs',
+      "Trancher, prioriser, et dépasser les freins à l'action",
+      "Transformer une intention en plan d'action et vous remettre en mouvement durablement",
+    ],
+  },
+  {
+    titre: 'Équilibre & Qualité de Vie au Travail',
+    duree: '2h',
+    tarif: '120 €',
+    description: "Apprenez à gérer votre charge mentale pour retrouver équilibre et qualité de vie, dans une logique de prévention des risques psychosociaux (RPS) et de qualité de vie au travail (QVT).",
+    contenu: [
+      'Comprendre la charge mentale, repérer vos sources de surcharge et les signaux d’alerte',
+      'Prendre du recul sur vos automatismes et poser des limites adaptées',
+      'Reprendre la main sur votre quotidien : priorités, temps, énergie, pression, lâcher-prise',
+      'Reconnecter avec ce qui fait sens et ancrer des actions durables au quotidien',
+    ],
+  },
+];
+---
+<BaseLayout
+  titre="Ateliers — QualioExpert"
+  description="Des ateliers thématiques pour avancer concrètement sur un aspect précis de votre parcours professionnel."
+>
+  <section class="section">
+    <div class="conteneur">
+      <h1>Ateliers</h1>
+      <p class="intro">
+        Des ateliers thématiques, concrets et interactifs, pour renforcer vos
+        compétences, faire évoluer votre posture professionnelle et
+        concrétiser vos projets.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="conteneur">
+      <div class="ateliers">
+        {ateliers.map((a) => (
+          <div class="atelier">
+            <div class="atelier__entete">
+              <h2>{a.titre}</h2>
+              <span class="atelier__tarif">{a.duree} — {a.tarif}</span>
+            </div>
+            <p>{a.description}</p>
+            <p class="atelier__sous-titre">Contenu :</p>
+            <ul class="liste-check">
+              {a.contenu.map((c) => <li>{c}</li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--sombre" style="text-align:center;">
+    <div class="conteneur">
+      <h2>Une question sur ces ateliers ?</h2>
+      <a href="/contact" class="bouton">Réserver un échange offert</a>
+      <span class="mention-bouton" style="color:rgba(255,255,255,0.75);">⏱ 30 minutes — sans engagement</span>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .ateliers { display: flex; flex-direction: column; gap: 2rem; }
+  .atelier {
+    background: #fff;
+    border-radius: var(--rayon);
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(46, 53, 33, 0.06);
+  }
+  .atelier h2 { margin-top: 0; }
+  .atelier__sous-titre { font-weight: 600; margin-bottom: 0.6rem; }
+  .atelier__entete { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; }
+  .atelier__entete h2 { margin-bottom: 0; }
+  .atelier__tarif {
+    flex: 0 0 auto;
+    background: var(--couleur-fond-alt);
+    color: var(--vert-fonce);
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 0.4rem 1rem;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+</style>

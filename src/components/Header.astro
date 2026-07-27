@@ -1,0 +1,189 @@
+---
+// Barre de navigation présente en haut de chaque page.
+const liens = [
+  { texte: 'Accueil', url: '/' },
+  {
+    texte: 'Le bilan de compétences',
+    url: '/bilan-de-competences',
+    enfants: [
+      { texte: 'Le bilan de compétences', url: '/bilan-de-competences' },
+      { texte: "Le bilan d'orientation scolaire", url: '/bilan-orientation-scolaire' },
+    ],
+  },
+  { texte: 'Ateliers', url: '/ateliers' },
+  { texte: 'Tarifs', url: '/tarifs-et-financement' },
+  { texte: 'À propos', url: '/a-propos' },
+  { texte: 'Blog', url: '/blog' },
+  { texte: 'Contact', url: '/contact' },
+];
+const chemin = Astro.url.pathname;
+const estActif = (l) => l.url === chemin || l.enfants?.some((e) => e.url === chemin);
+---
+<header class="entete">
+  <div class="conteneur entete__inner">
+    <a href="/" class="entete__logo">
+      <img src="/images/logo-qualioexpert.png" alt="QualioExpert" />
+    </a>
+    <nav class="entete__nav">
+      {liens.map((l) => (
+        l.enfants ? (
+          <div class="entete__item">
+            <a href={l.url} class={estActif(l) ? 'actif' : ''}>
+              {l.texte}
+              <svg class="entete__chevron" width="10" height="6" viewBox="0 0 10 6" aria-hidden="true">
+                <path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <div class="entete__dropdown">
+              {l.enfants.map((e) => <a href={e.url} class={chemin === e.url ? 'actif' : ''}>{e.texte}</a>)}
+            </div>
+          </div>
+        ) : (
+          <a href={l.url} class={estActif(l) ? 'actif' : ''}>{l.texte}</a>
+        )
+      ))}
+    </nav>
+    <a href="/contact" class="bouton bouton--petit entete__cta">Réserver un échange offert</a>
+    <button class="entete__burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="menu-mobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="entete__mobile" id="menu-mobile" hidden>
+    <div class="conteneur">
+      {liens.map((l) => (
+        l.enfants ? (
+          <div class="entete__mobile-groupe">
+            <span class="entete__mobile-titre">{l.texte}</span>
+            {l.enfants.map((e) => <a href={e.url} class={chemin === e.url ? 'actif' : ''}>{e.texte}</a>)}
+          </div>
+        ) : (
+          <a href={l.url} class={estActif(l) ? 'actif' : ''}>{l.texte}</a>
+        )
+      ))}
+      <a href="/contact" class="bouton">Réserver un échange offert</a>
+    </div>
+  </nav>
+</header>
+
+<script>
+  const burger = document.querySelector('.entete__burger');
+  const menu = document.getElementById('menu-mobile');
+  burger?.addEventListener('click', () => {
+    const ouvert = burger.getAttribute('aria-expanded') === 'true';
+    burger.setAttribute('aria-expanded', String(!ouvert));
+    burger.setAttribute('aria-label', ouvert ? 'Ouvrir le menu' : 'Fermer le menu');
+    if (menu) menu.hidden = ouvert;
+  });
+</script>
+
+<style>
+  .entete {
+    background: var(--vert-fonce);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  /* Un peu plus large que le reste du site : le menu compte 6 entrées + le bouton. */
+  .entete__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    max-width: 1240px;
+  }
+  .entete__logo {
+    display: inline-flex;
+    align-items: center;
+  }
+  .entete__logo img { height: 56px; width: auto; border-radius: 8px; }
+  .entete__nav { display: flex; align-items: center; gap: 1.2rem; }
+  .entete__nav > a, .entete__item > a {
+    text-decoration: none;
+    color: rgba(255,255,255,0.88);
+    font-weight: 500;
+    font-size: 0.95rem;
+    white-space: nowrap;
+  }
+  .entete__nav a:hover { color: #fff; }
+  .entete__nav a.actif { color: var(--vert-sauge-clair); font-weight: 700; }
+
+  /* Sous-menu déroulant (ex : Le bilan de compétences) */
+  .entete__item { position: relative; display: flex; align-items: center; }
+  .entete__item > a { display: inline-flex; align-items: center; gap: 0.35rem; }
+  .entete__chevron { flex: 0 0 auto; transition: transform 0.15s ease; }
+  .entete__item:hover .entete__chevron, .entete__item:focus-within .entete__chevron { transform: rotate(180deg); }
+  .entete__dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 0.7rem;
+    background: #fff;
+    border-radius: var(--rayon);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    padding: 0.5rem;
+    min-width: 240px;
+    flex-direction: column;
+  }
+  .entete__item:hover .entete__dropdown, .entete__item:focus-within .entete__dropdown { display: flex; }
+  .entete__dropdown a {
+    color: var(--couleur-texte) !important;
+    font-weight: 500;
+    padding: 0.6rem 0.8rem;
+    border-radius: 8px;
+    white-space: normal;
+  }
+  .entete__dropdown a:hover { background: var(--couleur-fond-alt); }
+  .entete__dropdown a.actif { color: var(--vert-cta-hover) !important; font-weight: 700; }
+  .entete__cta.bouton {
+    background: #fff;
+    color: var(--vert-fonce);
+  }
+  .entete__cta.bouton:hover { background: var(--vert-sauge-clair); }
+  .bouton--petit { padding: 0.55rem 1.1rem; font-size: 0.92rem; white-space: nowrap; }
+
+  /* Bouton burger : visible uniquement sur petits écrans */
+  .entete__burger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 44px; height: 44px;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  .entete__burger span {
+    display: block;
+    height: 2px;
+    background: #fff;
+    border-radius: 2px;
+  }
+  .entete__burger[aria-expanded='true'] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .entete__burger[aria-expanded='true'] span:nth-child(2) { opacity: 0; }
+  .entete__burger[aria-expanded='true'] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .entete__mobile {
+    border-top: 1px solid rgba(255,255,255,0.15);
+    padding: 1rem 0 1.5rem;
+    background: var(--vert-fonce);
+  }
+  .entete__mobile .conteneur { display: flex; flex-direction: column; gap: 0.9rem; align-items: flex-start; }
+  .entete__mobile a { text-decoration: none; color: rgba(255,255,255,0.88); font-weight: 500; }
+  .entete__mobile a.actif { color: var(--vert-sauge-clair); font-weight: 700; }
+  .entete__mobile .bouton { background: #fff; color: var(--vert-fonce); margin-top: 0.4rem; }
+  .entete__mobile-groupe { display: flex; flex-direction: column; gap: 0.7rem; }
+  .entete__mobile-titre { color: rgba(255,255,255,0.55); font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.5px; }
+  .entete__mobile-groupe a { padding-left: 1rem; }
+
+  @media (max-width: 1120px) {
+    .entete__nav, .entete__cta { display: none; }
+    .entete__burger { display: flex; }
+  }
+  @media (min-width: 1121px) {
+    .entete__mobile { display: none; }
+  }
+</style>
