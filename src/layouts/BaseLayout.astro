@@ -6,6 +6,8 @@ import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 
 const { titre, description } = Astro.props;
+const imageOG = new URL('/images/og-image.png', Astro.site).toString();
+const urlPage = new URL(Astro.url.pathname, Astro.site).toString();
 ---
 <!doctype html>
 <html lang="fr">
@@ -19,7 +21,15 @@ const { titre, description } = Astro.props;
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap" rel="stylesheet" />
-    <!-- TODO : balises Open Graph (aperçu lors du partage sur les réseaux sociaux) -->
+
+    <!-- Open Graph (aperçu lors du partage : réseaux sociaux, messagerie...) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={titre} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={imageOG} />
+    <meta property="og:url" content={urlPage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={imageOG} />
   </head>
   <body>
     <Header />
