@@ -3,6 +3,7 @@ titre: "Les métiers en évolution en 2026 : ce que révèle la liste de France 
 description: "Chaque année, France Compétences identifie les métiers qui évoluent le plus vite. Voici ce que dit la mise à jour 2026, et pourquoi ce repère peut éclairer une réflexion de reconversion."
 date: 2026-07-30
 brouillon: false
+categorie: "Actualités"
 ---
 
 France Compétences tient à jour une liste officielle des métiers « en

@@ -3,6 +3,7 @@ titre: "L'intelligence émotionnelle au travail : de quoi parle-t-on vraiment ?"
 description: "On en parle partout sans jamais la définir. Voici ce que recouvre concrètement l'intelligence émotionnelle, et pourquoi elle compte dans un parcours professionnel."
 date: 2026-07-28
 brouillon: false
+categorie: "Ateliers"
 ---
 
 « Il faut plus d'intelligence émotionnelle en entreprise. » On lit cette phrase

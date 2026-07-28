@@ -6,6 +6,8 @@ import { getCollection } from 'astro:content';
 // Récupère les articles (hors brouillons), triés du plus récent au plus ancien
 const articles = (await getCollection('blog', ({ data }) => !data.brouillon))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const categories = ['Tous', 'Bilan de compétences', "Orientation scolaire", 'Ateliers', 'Actualités'];
 ---
 <BaseLayout
   titre="Blog — QualioExpert"
@@ -15,21 +17,80 @@ const articles = (await getCollection('blog', ({ data }) => !data.brouillon))
     <div class="conteneur">
       <h1>Le blog</h1>
       <p class="intro">Conseils et ressources pour y voir clair dans votre parcours professionnel : bilan de compétences, reconversion, évolution, sens au travail.</p>
+
+      <div class="filtres" role="group" aria-label="Filtrer les articles par catégorie">
+        {categories.map((cat, i) => (
+          <button type="button" class="filtre" class:list={[{ actif: i === 0 }]} data-categorie={cat}>{cat}</button>
+        ))}
+      </div>
+
       <div class="grille articles">
         {articles.map((article) => (
-          <a href={`/blog/${article.slug}`} class="carte article">
+          <a href={`/blog/${article.slug}`} class="carte article" data-categorie={article.data.categorie}>
+            <span class="article__categorie">{article.data.categorie}</span>
             <h3>{article.data.titre}</h3>
             <p>{article.data.description}</p>
             <span class="article__lire">Lire l'article →</span>
           </a>
         ))}
       </div>
+      <p class="articles__vide" hidden>Aucun article dans cette catégorie pour l'instant.</p>
     </div>
   </section>
 </BaseLayout>
 
+<script>
+  const boutons = document.querySelectorAll<HTMLButtonElement>('.filtre');
+  const cartes = document.querySelectorAll<HTMLAnchorElement>('.article');
+  const vide = document.querySelector<HTMLParagraphElement>('.articles__vide');
+
+  boutons.forEach((bouton) => {
+    bouton.addEventListener('click', () => {
+      boutons.forEach((b) => b.classList.remove('actif'));
+      bouton.classList.add('actif');
+
+      const categorie = bouton.dataset.categorie;
+      let visibles = 0;
+      cartes.forEach((carte) => {
+        const correspond = categorie === 'Tous' || carte.dataset.categorie === categorie;
+        carte.hidden = !correspond;
+        if (correspond) visibles += 1;
+      });
+      if (vide) vide.hidden = visibles > 0;
+    });
+  });
+</script>
+
 <style>
   .articles { margin-top: 2rem; }
   .article { text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 0.5rem; }
+  .article[hidden] { display: none; }
   .article__lire { color: var(--couleur-principale-foncee); font-weight: 600; margin-top: auto; }
+  .article__categorie {
+    align-self: flex-start;
+    background: rgba(139, 165, 116, 0.18);
+    color: var(--vert-fonce);
+    border-radius: 999px;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  .filtres { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; }
+  .filtre {
+    background: #fff;
+    border: 2px solid var(--vert-sauge-clair);
+    color: var(--vert-fonce);
+    border-radius: 999px;
+    padding: 0.5rem 1.1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .filtre:hover { background: var(--couleur-fond-alt); }
+  .filtre.actif { background: var(--vert-cta); border-color: var(--vert-cta); color: #fff; }
+
+  .articles__vide { margin-top: 2rem; color: var(--couleur-texte-clair); }
 </style>

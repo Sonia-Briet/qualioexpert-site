@@ -3,6 +3,7 @@ titre: "Ces habitudes de travail qui semblent normales — et qui ne le sont pas
 description: "Certains signaux d'épuisement professionnel ne ressemblent pas à de l'épuisement. Ils ressemblent à de la conscience professionnelle. Voici comment les repérer."
 date: 2026-07-29
 brouillon: false
+categorie: "Ateliers"
 ---
 
 Aucune de ces phrases ne sonne comme une alerte. C'est bien le problème.

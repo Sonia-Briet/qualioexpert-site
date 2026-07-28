@@ -3,6 +3,7 @@ titre: "Bilan de compétences : par où commencer quand on hésite ?"
 description: "Vous ressentez un besoin de changement sans savoir par où commencer ? Voici comment aborder sereinement les premières étapes."
 date: 2026-07-22
 brouillon: false
+categorie: "Bilan de compétences"
 ---
 
 Beaucoup de personnes que j'accompagne arrivent avec la même phrase : « Je sais

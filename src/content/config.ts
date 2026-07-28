@@ -11,6 +11,12 @@ const blog = defineCollection({
     date: z.date(),
     image: z.string().optional(),
     brouillon: z.boolean().default(false),
+    categorie: z.enum([
+      'Bilan de compétences',
+      "Orientation scolaire",
+      'Ateliers',
+      'Actualités',
+    ]),
   }),
 });
 
