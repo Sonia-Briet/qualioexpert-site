@@ -20,7 +20,6 @@ const { Content } = await article.render();
     <div class="conteneur article-contenu">
       <a href="/blog" class="retour">← Tous les articles</a>
       <h1>{article.data.titre}</h1>
-      <time>{article.data.date.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}</time>
       <div class="prose">
         <Content />
       </div>

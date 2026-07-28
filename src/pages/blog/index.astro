@@ -19,7 +19,6 @@ const articles = (await getCollection('blog', ({ data }) => !data.brouillon))
         {articles.map((article) => (
           <a href={`/blog/${article.slug}`} class="carte article">
             <h3>{article.data.titre}</h3>
-            <time>{article.data.date.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}</time>
             <p>{article.data.description}</p>
             <span class="article__lire">Lire l'article →</span>
           </a>
@@ -32,6 +31,5 @@ const articles = (await getCollection('blog', ({ data }) => !data.brouillon))
 <style>
   .articles { margin-top: 2rem; }
   .article { text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 0.5rem; }
-  .article time { color: var(--couleur-texte-clair); font-size: 0.9rem; }
   .article__lire { color: var(--couleur-principale-foncee); font-weight: 600; margin-top: auto; }
 </style>
