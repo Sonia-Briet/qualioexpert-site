@@ -8,7 +8,6 @@ const offres = [
   {
     nom: 'Formule Essentielle',
     prix: '1 600 €',
-    prixHT: '1 333,33 € HT',
     items: [
       "<strong>16 heures</strong> d'accompagnement, réparties sur 8 à 12 semaines",
       "Une phase d'analyse de départ approfondie, pour explorer plus en détail votre parcours et vos expériences",
@@ -22,7 +21,6 @@ const offres = [
   {
     nom: 'Formule Approfondie',
     prix: '2 000 €',
-    prixHT: '1 666,67 € HT',
     items: [
       "<strong>20 heures</strong> d'accompagnement, réparties sur 8 à 12 semaines",
       "Une phase d'analyse de départ approfondie, pour explorer plus en détail votre parcours et vos expériences",
@@ -87,7 +85,7 @@ const faq = [
             <h3>{o.nom}</h3>
             <div class="offre__prix">
               <strong>{o.prix}</strong>
-              <span>TTC — {o.prixHT}</span>
+              <span>TTC</span>
             </div>
             <ul class="liste-check">
               {o.items.map((i) => <li set:html={i} />)}
