@@ -7,7 +7,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 const offres = [
   {
     nom: 'Formule Essentielle',
-    prix: '1 400 €',
+    prix: '1 600 €',
+    prixHT: '1 333,33 € HT',
     items: [
       "<strong>16 heures</strong> d'accompagnement, réparties sur 8 à 12 semaines",
       "Une phase d'analyse de départ approfondie, pour explorer plus en détail votre parcours et vos expériences",
@@ -20,7 +21,8 @@ const offres = [
   },
   {
     nom: 'Formule Approfondie',
-    prix: '1 800 €',
+    prix: '2 000 €',
+    prixHT: '1 666,67 € HT',
     items: [
       "<strong>20 heures</strong> d'accompagnement, réparties sur 8 à 12 semaines",
       "Une phase d'analyse de départ approfondie, pour explorer plus en détail votre parcours et vos expériences",
@@ -85,7 +87,7 @@ const faq = [
             <h3>{o.nom}</h3>
             <div class="offre__prix">
               <strong>{o.prix}</strong>
-              <span>net de taxe</span>
+              <span>TTC — {o.prixHT}</span>
             </div>
             <ul class="liste-check">
               {o.items.map((i) => <li set:html={i} />)}
@@ -94,8 +96,8 @@ const faq = [
         ))}
       </div>
       <p class="offre__mention" style="margin-top:1.5rem;">
-        Prestation non soumise à TVA (article 261-4-4° du CGI). Devis et convention
-        de formation fournis avant toute entrée en bilan.
+        Prix TTC (TVA 20% incluse). Devis et convention de formation fournis
+        avant toute entrée en bilan.
       </p>
     </div>
   </section>
