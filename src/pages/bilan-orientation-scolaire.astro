@@ -1,11 +1,12 @@
 ---
 // PAGE — LE BILAN D'ORIENTATION SCOLAIRE
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Icone from '../components/Icone.astro';
 
 const publics = [
-  { icone: '🎒', label: 'Collégiens' },
-  { icone: '📚', label: 'Lycéens' },
-  { icone: '🎓', label: 'Étudiants en études supérieures' },
+  { icone: 'cartable', label: 'Collégiens' },
+  { icone: 'livre', label: 'Lycéens' },
+  { icone: 'diplome', label: 'Étudiants en études supérieures' },
 ];
 
 const situations = [
@@ -64,7 +65,7 @@ const etapes = [
       </p>
       <ul class="publics">
         {publics.map((p) => (
-          <li><span class="publics__icone">{p.icone}</span>{p.label}</li>
+          <li><span class="publics__icone"><Icone nom={p.icone} /></span>{p.label}</li>
         ))}
       </ul>
     </div>
@@ -149,9 +150,12 @@ const etapes = [
         étudiants dans l'enseignement supérieur, aujourd'hui ceux des
         professionnels en tant que consultante indépendante. Ma mission :
         aider chacun à mieux se connaître, à valoriser ses compétences et à
-        construire un projet réaliste. Je suis certifiée CCP2 du Titre
-        professionnel Conseiller en Insertion Professionnelle, spécialisé
-        dans la pratique du bilan de compétences (RNCP n°37274BC02).
+        construire un projet réaliste. Je suis titulaire du certificat de
+        compétences professionnelles « Accompagner les personnes dans leur
+        parcours d'insertion sociale et professionnelle », délivré par le
+        ministère du Travail et des Solidarités : l'un des blocs du titre
+        professionnel de Conseiller en insertion professionnelle (RNCP
+        n°37274BC02).
       </p>
       <a href="/a-propos" class="bouton bouton--secondaire">En savoir plus sur mon parcours</a>
     </div>
@@ -193,8 +197,18 @@ const etapes = [
 
 <style>
   .publics { list-style: none; padding: 0; margin: 1.5rem 0 0; display: flex; flex-wrap: wrap; gap: 1rem 2rem; }
-  .publics li { display: flex; align-items: center; gap: 0.6rem; font-weight: 600; max-width: 280px; }
-  .publics__icone { font-size: 1.4rem; }
+  .publics li { display: flex; align-items: center; gap: 0.8rem; font-weight: 600; max-width: 280px; }
+  .publics__icone {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    width: 2.6rem;
+    height: 2.6rem;
+    border-radius: 50%;
+    background: #fff; /* la section est sur fond vert clair : pastille blanche pour ressortir */
+    color: var(--vert-fonce);
+  }
 
   .etapes { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 1.5rem; }
   .etape { display: grid; grid-template-columns: auto 1fr; gap: 1.2rem; align-items: start; }

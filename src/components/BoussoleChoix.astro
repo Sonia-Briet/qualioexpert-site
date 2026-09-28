@@ -4,10 +4,13 @@
 interface Props {
   compact?: boolean;
 }
+import Icone from './Icone.astro';
+
 const { compact = false } = Astro.props;
 
+// `icone` : petit symbole texte, ou `nomIcone` : icône du composant Icone.
 const issues = [
-  { position: 'nord', icone: '🌱', titre: 'Évolution', texte: 'Poste différent + même contexte' },
+  { position: 'nord', nomIcone: 'pousse', titre: 'Évolution', texte: 'Poste différent + même contexte' },
   { position: 'est', icone: '⇄', titre: 'Reconversion', texte: 'Poste différent + contexte différent' },
   { position: 'sud', icone: '→', titre: 'Transfert', texte: 'Même poste + contexte différent' },
   { position: 'ouest', icone: '↻', titre: 'Continuité', texte: 'Même poste + même contexte' },
@@ -22,7 +25,9 @@ const issues = [
   <div class="boussole-grille">
     {issues.map((i) => (
       <div class={`boussole-item boussole-item--${i.position}`}>
-        <span class="boussole-icone">{i.icone}</span>
+        <span class="boussole-icone">
+          {i.nomIcone ? <Icone nom={i.nomIcone} taille={compact ? '1.1rem' : '1.4rem'} /> : i.icone}
+        </span>
         <h3>{i.titre}</h3>
         {!compact && <p>{i.texte}</p>}
       </div>

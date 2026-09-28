@@ -1,0 +1,242 @@
+---
+// PAGE — COACHING CARRIÈRE & EMPLOI
+// Parcours de 8 séances d'1 h en visio, sur 2 mois, à 800 € TTC.
+// Public : salariés et cadres / managers.
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const situations = [
+  "Vous n'osez pas trancher entre rester et vous reconvertir",
+  'Votre recherche d’emploi s’éternise et entame votre confiance',
+  'Vous savez ce que vous ne voulez plus, mais pas encore ce que vous voulez',
+  'Vous sentez un frein invisible, sans réussir à le nommer',
+  'Vous doutez de vos choix, de vos capacités, de votre légitimité',
+];
+
+const apports = [
+  'Comprendre ce qui vous freine et vous retient',
+  'Mettre des mots sur vos besoins profonds, vos valeurs, ce qui vous anime vraiment',
+  'Apprendre à changer en profondeur, et non en surface',
+  'Bâtir une stratégie sur mesure, avec un plan d’action précis, mesurable et réaliste',
+  'Passer à l’action, à votre rythme, vers votre objectif',
+  'Retrouver motivation, confiance en vous et efficacité',
+];
+
+const faits = [
+  { valeur: '8', label: "séances d'1 heure" },
+  { valeur: '2 mois', label: 'pour retrouver un cap' },
+  { valeur: 'Visio', label: 'où que vous soyez' },
+];
+---
+<BaseLayout
+  titre="Coaching carrière & emploi — QualioExpert"
+  description="Un coaching individuel de 8 séances en visio, sur 2 mois, pour salariés et cadres : lever vos freins, clarifier votre voie et passer à l'action."
+>
+  <section class="section">
+    <div class="conteneur">
+      <h1>Coaching carrière &amp; emploi</h1>
+      <p class="intro">
+        Retrouvez un nouveau souffle professionnel. 8 séances en visio, sur
+        2 mois, pour reprendre la main sur votre parcours.
+      </p>
+    </div>
+  </section>
+
+  <!-- VOUS VOUS RECONNAISSEZ -->
+  <section class="section section--alt">
+    <div class="conteneur">
+      <h2>Vous vous reconnaissez ?</h2>
+      <p>
+        Vous hésitez à vous reconvertir, sans savoir si c'est le bon moment ni
+        la bonne voie ? Ou vous avez déjà franchi le pas, et la recherche
+        d'emploi se révèle plus rude que prévu ? Dans les deux cas, le
+        sentiment est le même : tout semble vous échapper, et le doute
+        s'installe.
+      </p>
+      <ul class="liste-check">
+        {situations.map((s) => <li>{s}</li>)}
+      </ul>
+      <p>
+        Ce coaching s'adresse aux <strong>salariés</strong>, <strong>cadres</strong>
+        ou <strong>managers</strong> qui souhaitent reprendre la main sur leur
+        trajectoire.
+      </p>
+    </div>
+  </section>
+
+  <!-- UN ESPACE POUR Y VOIR CLAIR -->
+  <section class="section">
+    <div class="conteneur">
+      <h2>Un espace pour y voir clair</h2>
+      <p>
+        Je suis là pour vous aider à comprendre vos hésitations et vos peurs.
+        L'objectif : que vous choisissiez votre future voie en pleine
+        conscience, et que vous sachiez comment vous y rendre.
+      </p>
+      <p>
+        Chemin faisant, vous découvrez ce qui est en vous sans que vous
+        l'ayez encore remarqué, ce qui compte vraiment à vos yeux, et ce dont
+        vous ne voulez plus. C'est une rencontre avec vous-même, autant
+        qu'avec l'avenir que vous voulez construire.
+      </p>
+      <p>
+        Je vous accompagne pas à pas, sans jugement et sans posture de
+        sachant. Écoute active, questions, reformulations : nous dénouons
+        ensemble, un à un, ce qui vous empêche d'y voir clair et de passer à
+        l'action.
+      </p>
+      <p>
+        Savoir ce que l'on veut, accueillir ses émotions, repérer ses
+        croyances limitantes et ses peurs, s'autoriser à être soi, faire de
+        ses fragilités des forces : voilà ce qu'un coaching professionnel rend
+        possible. Vous repartez avec un cap clair, sur un chemin qui est le
+        vôtre.
+      </p>
+    </div>
+  </section>
+
+  <!-- CE QUE VOUS EN RETIREZ -->
+  <section class="section section--alt">
+    <div class="conteneur">
+      <h2>Ce que vous en retirez</h2>
+      <ul class="liste-check">
+        {apports.map((a) => <li>{a}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <!-- MODALITÉS ET TARIF -->
+  <section class="section">
+    <div class="conteneur">
+      <h2>Modalités et tarif</h2>
+      <div class="faits">
+        {faits.map((f) => (
+          <div class="fait">
+            <strong>{f.valeur}</strong>
+            <span>{f.label}</span>
+          </div>
+        ))}
+      </div>
+      <div class="offre">
+        <div class="offre__prix">
+          <strong>800 €</strong>
+          <span>TTC, le parcours complet</span>
+        </div>
+        <div>
+          <ul class="liste-check">
+            <li><strong>8 séances</strong> individuelles d'1 heure, soit <strong>8 heures</strong> d'accompagnement</li>
+            <li>Réparties sur <strong>2 mois</strong>, pour avancer à un rythme soutenu tout en gardant le temps d'agir entre chaque séance</li>
+            <li>En <strong>visioconférence</strong>, depuis chez vous</li>
+            <li>Un plan d'action personnalisé, construit avec vous</li>
+          </ul>
+          <p class="offre__mention">
+            Prix TTC (TVA 20 % incluse). Un devis vous est remis avant tout
+            engagement. Nous voyons ensemble les modalités de règlement lors
+            du premier échange.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COACHING OU BILAN -->
+  <section class="section section--alt">
+    <div class="conteneur">
+      <h2>Coaching ou bilan de compétences ?</h2>
+      <p>
+        Les deux démarches se complètent, mais ne répondent pas au même
+        besoin. Le <a href="/bilan-de-competences">bilan de compétences</a>
+        fait le point sur votre parcours, vos compétences et vos aspirations
+        pour construire un projet professionnel. Le coaching travaille sur ce
+        qui vous freine et sur votre passage à l'action. Lors de notre premier
+        échange, nous regardons ensemble laquelle des deux vous correspond le
+        mieux.
+      </p>
+      <p class="offre__mention">
+        Le coaching professionnel est un accompagnement centré sur votre
+        carrière. Il ne remplace ni un suivi médical ni une thérapie.
+      </p>
+    </div>
+  </section>
+
+  <!-- QUI VOUS ACCOMPAGNE -->
+  <section class="section">
+    <div class="conteneur">
+      <h2>Qui vous accompagne</h2>
+      <p>
+        Depuis 25 ans, j'accompagne les parcours de vie : d'abord ceux des
+        étudiants dans l'enseignement supérieur, aujourd'hui ceux des
+        professionnels en tant que consultante indépendante. Ma conviction :
+        chacun a en lui les ressources pour avancer, à condition de s'autoriser
+        à les regarder en face.
+      </p>
+      <a href="/a-propos" class="bouton bouton--secondaire">En savoir plus sur mon parcours</a>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--sombre" style="text-align:center;">
+    <div class="conteneur">
+      <h2>Votre avenir professionnel commence maintenant</h2>
+      <p>Le premier échange sert à faire connaissance et à voir si ce coaching vous convient.</p>
+      <a href="/contact" class="bouton">Réserver un échange offert</a>
+      <span class="mention-bouton" style="color:rgba(255,255,255,0.75);">⏱ 30 minutes — sans engagement</span>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .liste-check { list-style: none; padding: 0; margin-top: 1rem; }
+  .liste-check li { padding-left: 1.8rem; position: relative; margin-bottom: 0.6rem; }
+  .liste-check li::before { content: '✓'; position: absolute; left: 0; color: var(--vert-cta); font-weight: 700; }
+
+  .faits {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  .fait {
+    background: var(--couleur-fond-alt);
+    border-radius: var(--rayon);
+    padding: 1.2rem 1.5rem;
+    text-align: center;
+  }
+  .fait strong {
+    display: block;
+    font-family: var(--police-titres);
+    font-size: 1.8rem;
+    color: var(--vert-fonce);
+    line-height: 1.1;
+  }
+  .fait span { font-size: 0.9rem; color: var(--couleur-texte-clair); }
+
+  .offre {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 2.5rem;
+    align-items: start;
+    background: #fff;
+    border-radius: var(--rayon);
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(46, 53, 33, 0.06);
+  }
+  .offre__prix {
+    text-align: center;
+    padding: 1.2rem 2rem;
+    background: var(--couleur-fond-alt);
+    border-radius: var(--rayon);
+  }
+  .offre__prix strong {
+    display: block;
+    font-family: var(--police-titres);
+    font-size: 2.2rem;
+    color: var(--vert-fonce);
+    line-height: 1.1;
+  }
+  .offre__prix span { font-size: 0.9rem; color: var(--couleur-texte-clair); }
+  .offre__mention { font-size: 0.9rem; color: var(--couleur-texte-clair); }
+
+  @media (max-width: 820px) {
+    .offre { grid-template-columns: 1fr; gap: 1.5rem; }
+  }
+</style>

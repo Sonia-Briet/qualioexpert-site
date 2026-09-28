@@ -1,5 +1,7 @@
 ---
 // Pied de page : identité, coordonnées, liens, mentions légales.
+import Icone from './Icone.astro';
+
 const annee = new Date().getFullYear();
 ---
 <footer class="pied">
@@ -7,12 +9,13 @@ const annee = new Date().getFullYear();
     <div class="pied__marque">
       <strong>QualioExpert</strong>
       <p>Sonia Briet — Consultante en bilan de compétences et formation.<br/>
-        Certifiée CCP2 du Titre professionnel Conseiller en Insertion Professionnelle — pratique du bilan de compétences (RNCP n°37274BC02).</p>
+        Certifiée par le ministère du Travail et des Solidarités : « Accompagner les personnes dans leur parcours d'insertion sociale et professionnelle », bloc du titre professionnel de Conseiller en insertion professionnelle (RNCP n°37274BC02).</p>
       <p class="pied__slogan">« Vous n'avez plus besoin d'y penser, vous avez besoin d'y voir clair. »</p>
     </div>
     <nav class="pied__liens">
       <a href="/bilan-de-competences">Le bilan de compétences</a>
       <a href="/bilan-orientation-scolaire">Bilan d'orientation scolaire</a>
+      <a href="/coaching-carriere-emploi">Coaching carrière &amp; emploi</a>
       <a href="/ateliers">Ateliers</a>
       <a href="/tarifs-et-financement">Tarifs</a>
       <a href="/a-propos">À propos</a>
@@ -21,8 +24,8 @@ const annee = new Date().getFullYear();
       <a href="/mentions-legales">Mentions légales</a>
     </nav>
     <div class="pied__contact">
-      <p>📧 <a href="mailto:qualioexpert@gmail.com">qualioexpert@gmail.com</a></p>
-      <p>✆ <a href="tel:+33616687383">06 16 68 73 83</a></p>
+      <p><Icone nom="mail" taille="1.1rem" /> <a href="mailto:qualioexpert@gmail.com">qualioexpert@gmail.com</a></p>
+      <p><Icone nom="telephone" taille="1.1rem" /> <a href="tel:+33616687383">06 16 68 73 83</a></p>
     </div>
   </div>
   <div class="conteneur pied__bas">

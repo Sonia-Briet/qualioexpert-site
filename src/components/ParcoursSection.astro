@@ -1,13 +1,15 @@
 ---
 // SECTION "PARCOURS D'ACCOMPAGNEMENT"
 // Version épurée et légère de votre bannière d'origine.
+import Icone from './Icone.astro';
+
 const etapes = [
-  { icone: '📍', label: 'Situation actuelle' },
-  { icone: '💬', label: 'Premier échange offert', note: 'sans engagement' },
-  { icone: '🧭', label: 'Bilan de compétences' },
-  { icone: '🔄', label: 'Transition professionnelle' },
-  { icone: '🎓', label: 'Formation si besoin' },
-  { icone: '🌱', label: 'Nouveau projet' },
+  { icone: 'lieu', label: 'Situation actuelle' },
+  { icone: 'message', label: 'Premier échange offert', note: 'sans engagement' },
+  { icone: 'boussole', label: 'Bilan de compétences' },
+  { icone: 'transition', label: 'Transition professionnelle' },
+  { icone: 'diplome', label: 'Formation si besoin' },
+  { icone: 'pousse', label: 'Nouveau projet' },
 ];
 ---
 <section class="parcours">
@@ -19,7 +21,7 @@ const etapes = [
     <ol class="parcours__etapes">
       {etapes.map((e) => (
         <li class="parcours__etape">
-          <span class="parcours__icone">{e.icone}</span>
+          <span class="parcours__icone"><Icone nom={e.icone} taille="1.6rem" /></span>
           <span class="parcours__label">{e.label}</span>
           {e.note && <span class="parcours__note">{e.note}</span>}
         </li>
@@ -27,8 +29,8 @@ const etapes = [
     </ol>
 
     <ul class="parcours__valeurs">
-      <li>🛡️ Confidentialité et respect</li>
-      <li>💚 Approche inclusive et adaptée à vos besoins</li>
+      <li><Icone nom="bouclier" taille="1.2rem" /> Confidentialité et respect</li>
+      <li><Icone nom="coeur" taille="1.2rem" /> Approche inclusive et adaptée à vos besoins</li>
     </ul>
   </div>
 </section>
@@ -58,7 +60,7 @@ const etapes = [
     position: absolute; right: -0.7rem; top: 50%; transform: translateY(-50%);
     color: rgba(255,255,255,0.8); font-weight: 700; z-index: 1;
   }
-  .parcours__icone { font-size: 1.5rem; }
+  .parcours__icone { display: inline-flex; margin-bottom: 0.2rem; }
   .parcours__label { font-weight: 600; font-size: 0.95rem; line-height: 1.3; }
   .parcours__note { font-size: 0.78rem; color: rgba(255,255,255,0.85); font-style: italic; }
 

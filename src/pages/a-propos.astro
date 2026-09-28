@@ -1,6 +1,7 @@
 ---
 // PAGE À PROPOS — Sonia Briet
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Icone from '../components/Icone.astro';
 ---
 <BaseLayout
   titre="À propos — Sonia Briet, QualioExpert"
@@ -11,7 +12,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <div class="apropos__image">
         <img src="/images/sonia.jpg" alt="Sonia Briet" />
         <ul class="badges" style="margin-top:1.2rem;">
-          <li>Certifiée CCP2 — Bilan de compétences</li>
+          <li>Certifiée par le ministère du Travail</li>
           <li>25 ans d'expérience</li>
           <li>Référente Handicap</li>
         </ul>
@@ -93,9 +94,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         transitions professionnelles.
       </p>
       <p>
-        Cette expérience de terrain, alliée à ma certification CCP2, me permet
-        aujourd'hui de vous accompagner avec la même exigence dans votre bilan
-        de compétences.
+        Cette expérience de terrain, alliée à ma certification du ministère du
+        Travail en accompagnement à l'insertion sociale et professionnelle, me
+        permet aujourd'hui de vous accompagner avec la même exigence dans votre
+        bilan de compétences.
       </p>
     </div>
   </section>
@@ -106,17 +108,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <h2>Mes certifications</h2>
       <div class="grille">
         <div class="carte">
-          <span class="carte__icone">🎓</span>
-          <h3>CCP2 — Accompagner les personnes dans leur parcours d'insertion professionnelle</h3>
-          <p>Bloc de compétences du Titre professionnel Conseiller en Insertion Professionnelle, portant sur la pratique du bilan de compétences (RNCP n°37274BC02), délivré par le Ministère du Travail et des Solidarités.</p>
+          <span class="carte__icone"><Icone nom="diplome" /></span>
+          <h3>Accompagner les personnes dans leur parcours d'insertion sociale et professionnelle</h3>
+          <p>Certificat de compétences professionnelles obtenu en février 2026 auprès du ministère du Travail et des Solidarités, après une formation centrée sur la pratique du bilan de compétences. Il constitue l'un des blocs du titre professionnel de Conseiller en insertion professionnelle (RNCP n°37274BC02).</p>
         </div>
         <div class="carte">
-          <span class="carte__icone">🧠</span>
+          <span class="carte__icone"><Icone nom="coeur" /></span>
           <h3>Premiers Secours en Santé Mentale (PSSM)</h3>
           <p>Pour repérer et accompagner avec justesse les situations de fragilité psychologique.</p>
         </div>
         <div class="carte">
-          <span class="carte__icone">♿</span>
+          <span class="carte__icone"><Icone nom="accessibilite" /></span>
           <h3>Référente Handicap</h3>
           <p>Accueil et accompagnement des personnes en situation de handicap, pour un suivi adapté aux besoins de chacun.</p>
         </div>
@@ -148,5 +150,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .liste-check li { padding-left: 1.8rem; position: relative; margin-bottom: 0.5rem; }
   .liste-check li::before { content: '✓'; position: absolute; left: 0; color: var(--vert-cta); font-weight: 700; }
   @media (max-width: 820px) { .apropos { grid-template-columns: 1fr; } }
-  .carte__icone { display: block; font-size: 1.8rem; margin-bottom: 0.6rem; }
+  .carte__icone {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.8rem;
+    height: 2.8rem;
+    margin-bottom: 0.8rem;
+    border-radius: 50%;
+    background: var(--couleur-fond-alt);
+    color: var(--vert-fonce);
+  }
 </style>
