@@ -57,7 +57,7 @@ const faq = [
   },
   {
     q: 'Quels sont les délais pour commencer ?',
-    r: "Après notre premier échange, l'entrée en bilan intervient généralement sous [2 à 4] semaines, selon les disponibilités de chacun. Conformément aux dispositions de l'article L.6353-5 du Code du travail, le bénéficiaire dispose, dans le cadre d'un financement direct (hors Compte Personnel de Formation), d'un délai de rétractation de dix (10) jours calendaires à compter de la signature de la convention.",
+    r: "Après notre premier échange, l'entrée en bilan intervient généralement sous 2 à 4 semaines, selon les disponibilités de chacun. Conformément aux dispositions de l'article L.6353-5 du Code du travail, le bénéficiaire dispose, dans le cadre d'un financement direct (hors Compte Personnel de Formation), d'un délai de rétractation de dix (10) jours calendaires à compter de la signature du contrat de formation.",
   },
 ];
 ---
@@ -85,7 +85,7 @@ const faq = [
             <h3>{o.nom}</h3>
             <div class="offre__prix">
               <strong>{o.prix}</strong>
-              <span>TTC</span>
+              <span>net, TVA non applicable</span>
             </div>
             <ul class="liste-check">
               {o.items.map((i) => <li set:html={i} />)}
@@ -94,8 +94,8 @@ const faq = [
         ))}
       </div>
       <p class="offre__mention" style="margin-top:1.5rem;">
-        Prix TTC (TVA 20% incluse). Devis et convention de formation fournis
-        avant toute entrée en bilan.
+        Prix nets, TVA non applicable (article 293 B du CGI). Devis et contrat
+        de formation fournis avant toute entrée en bilan.
       </p>
     </div>
   </section>
@@ -109,7 +109,7 @@ const faq = [
           <h3>Parcours de 8 séances</h3>
           <div class="offre__prix">
             <strong>800 €</strong>
-            <span>TTC</span>
+            <span>net, TVA non applicable</span>
           </div>
           <ul class="liste-check">
             <li><strong>8 séances</strong> individuelles d'1 heure, en visioconférence</li>
@@ -135,7 +135,7 @@ const faq = [
         Conformément aux dispositions de l'article L.6353-5 du Code du travail, le
         bénéficiaire dispose, dans le cadre d'un financement direct (hors Compte
         Personnel de Formation), d'un délai de rétractation de dix (10) jours
-        calendaires à compter de la signature de la convention.
+        calendaires à compter de la signature du contrat de formation.
       </p>
     </div>
   </section>
@@ -171,7 +171,7 @@ const faq = [
         En tant que référente handicap, je m'engage à adapter mon accompagnement
         aux besoins spécifiques des personnes en situation de handicap (PSH), afin
         de vous garantir les meilleures conditions de réalisation de votre bilan
-        au sein de mon organisme de formation. N'hésitez pas à me faire part de
+        dans le cadre de mon accompagnement. N'hésitez pas à me faire part de
         vos attentes : j'y répondrai dans les meilleurs délais.
       </p>
     </div>
